@@ -1,0 +1,67 @@
+mysql> create database Prm;
+Query OK, 1 row affected (0.95 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| assignment         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| prm                |
+| students           |
+| sys                |
+| workers            |
++--------------------+
+8 rows in set (0.02 sec)
+
+mysql> use prm;
+Database changed
+mysql> create table countries(
+    -> country_id int not null Auto_increment,
+    -> country_name varchar(255) not null,
+    -> region_id int not null,
+    -> primary key(country_id),
+    -> unique key country_name(country_name));
+Query OK, 0 rows affected (1.17 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_prm |
++---------------+
+| countries     |
++---------------+
+1 row in set (0.16 sec)
+
+mysql> describe countries;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| country_id   | int          | NO   | PRI | NULL    | auto_increment |
+| country_name | varchar(255) | NO   | UNI | NULL    |                |
+| region_id    | int          | NO   |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.09 sec)
+
+
+mysql> insert into countries(country_name,region_id) values
+    -> ('italy',1),
+    -> ('india',2),
+    -> ('china',3),
+    -> ('russia',4),
+    -> ('unitedstate',5);
+Query OK, 5 rows affected (0.48 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from countries;
++------------+--------------+-----------+
+| country_id | country_name | region_id |
++------------+--------------+-----------+
+|          1 | italy        |         1 |
+|          2 | india        |         2 |
+|          3 | china        |         3 |
+|          4 | russia       |         4 |
+|          5 | unitedstate  |         5 |
++------------+--------------+-----------+
+5 rows in set (0.09 sec)
